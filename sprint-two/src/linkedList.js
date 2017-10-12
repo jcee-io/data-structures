@@ -5,7 +5,7 @@ var LinkedList = function() {
 
   list.addToTail = function(value) {
     if (!list.head) { 
-      console.log(value);
+   
       list.head = new Node(value);
       list.tail = list.head;
     } else {
@@ -48,4 +48,7 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+    addToTail: O(1)
+    removeHead: O(1)
+    contains: O(n)
  */

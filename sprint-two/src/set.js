@@ -1,14 +1,17 @@
 var Set = function() {
   var set = Object.create(setPrototype);
   set._storage = {};
+  set.count = 0;
   return set;
+  
 };
 
 var setPrototype = {};
 
 setPrototype.add = function(item) {
-  if (!this.contains(item)) {
+  if (!this.contains(item) || typeof item === 'object') {
     this._storage[item] = item;
+    this.count++; 
   }
 };
 
@@ -18,6 +21,11 @@ setPrototype.contains = function(item) {
 
 setPrototype.remove = function(item) {
   delete this._storage[item];
+  this.count--;
+};
+
+setPrototype.size = function() {
+  return this.count;
 };
 
 /*

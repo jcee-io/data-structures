@@ -51,13 +51,13 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
-  it('should be able to add to head', function() {
+  it('🤠 should be able to add to head', function() {
     linkedList.addToHead(4);
     linkedList.addToHead(5);
     expect(linkedList.head.next.previous.value).to.equal(5);
   });
 
-  it('should be able to be doubly linked', function() {
+  it('🤠 should be able to be doubly linked', function() {
     linkedList.addToHead(4);
     linkedList.addToHead(5);
     linkedList.addToTail(6);
@@ -74,7 +74,7 @@ describe('linkedList', function() {
     expect(result.value).to.equal(5);
   });
   
-  it('should be able to remove from tail', function() {
+  it('🤠 should be able to remove from tail', function() {
     linkedList.addToHead(4);
     linkedList.addToHead(5);
     linkedList.addToTail(6);

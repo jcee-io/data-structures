@@ -24,4 +24,43 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should accept strings', function() {
+    set.add('Mel Gibson');
+    set.remove('Mel Gibson');
+    expect(set.contains('Mel Gibson')).to.equal(false);
+  });
+
+  it('should accept numbers', function() {
+    set.add(5);
+    expect(set.contains(5)).to.equal(true);
+  });
+
+  it('🤠 should accept any type and not acknowledge arrays nor objects', function() {
+    set.add(false);
+    set.add(['🤠']);
+    set.add({ 'a': 'b'});
+    set.add(function() {});
+    
+    
+
+    expect(set.contains(false)).to.equal(true);
+    expect(set.contains(['🤠'])).to.equal(true);
+    expect(set.contains({ 'a': 'b'})).to.equal(true);
+    expect(set.contains(function() {})).to.equal(true);
+
+  });
+
+  it('🤠 should have size reflect sad object filter', function() {
+    set.add(false);
+    set.add(['hello']);
+    set.add({ 'a': 'b'});
+    set.add(function() {});
+    set.add(false);
+    set.add(['hello']);
+    set.add({ 'a': 'b'});
+    set.add(function() {});
+    set.add(['hello']);
+    set.add({ 'a': 'b'});
+    expect(set.size()).to.equal(8);
+  });
 });

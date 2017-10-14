@@ -59,9 +59,6 @@ var BinarySearchTree = function(value) {
     recur(obj);
   };
 
-  obj.traverse = function(func) {
-    
-  };
   obj.breadthFirstLog = function(func) {
     var queue = [this];
     

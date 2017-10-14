@@ -3,8 +3,7 @@ var Tree = function(value) {
   newTree.value = value;
 
   // your code here
-  newTree.children = []; // fix me
-  newTree.parent = [];
+  newTree.children = [];
 
   _.extend(newTree, treeMethods);
   return newTree;
@@ -19,7 +18,6 @@ treeMethods.addChild = function(value) { //O(1)
 };
 
 treeMethods.contains = function(target) { //O(n)
-  
   var exists = false;
 
   var callback = function(node) {
@@ -42,38 +40,31 @@ treeMethods.traverse = function(func) {
 
     for (var i = 0; i < node.children.length; i++) {
       traveller(node.children[i]);
-      //traveller(node.left)
-      //traveller(node.right)
     }
   };
-  
   
   traveller(this);
 };
 
-// treeMethods.removeFromParent = function(value) { 
-//   var stored;
+treeMethods.removeFromParent = function(value) { 
 
-//   var toStore = function(node) {
-    
-//     if (node) {
-
-//       if (node.value === value) {
-//         stored = node;
-//       }
-//       for (var i = 0; i < node.children.length; i++) {
-//         toStore(node.children[i]);
-//       } 
-   
-//     }
-
-//   };
-//   toStore(this);
-//   stored.parent = [];
-//   stored.children = [];
-//   delete stored;
-
-// };
+  var callback = function(element) {
+    if (element.value === value) {
+      var parent = element.parent;
+      element.parent = null;
+      
+      ///find child of parent to delete
+      for (var i = 0; i < parent.children.length; i++) {
+        if (parent.children[i].value === value) {
+          delete parent.children[i];
+          break;
+        }
+      }
+    }
+  };
+  
+  this.traverse(callback);
+};
 
 
 

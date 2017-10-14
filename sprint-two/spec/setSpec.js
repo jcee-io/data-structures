@@ -39,14 +39,12 @@ describe('set', function() {
     set.add(false);
     set.add(['🤠']);
     set.add({ 'a': 'b'});
-    set.add(function() {});
     
     
 
     expect(set.contains(false)).to.equal(true);
-    expect(set.contains(['🤠'])).to.equal(true);
-    expect(set.contains({ 'a': 'b'})).to.equal(true);
-    expect(set.contains(function() {})).to.equal(true);
+    expect(set.contains(['🤠'])).to.equal(false);
+    expect(set.contains({ 'a': 'b'})).to.equal(false);
 
   });
 
@@ -61,6 +59,6 @@ describe('set', function() {
     set.add(function() {});
     set.add(['hello']);
     set.add({ 'a': 'b'});
-    expect(set.size()).to.equal(8);
+    expect(set.size()).to.equal(9);
   });
 });
